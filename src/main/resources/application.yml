@@ -1,0 +1,44 @@
+## Server Properties
+server:
+  port: 8100
+
+## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+# Oracle settings
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:orcl
+    username: soibac1001
+    password: Oracle1001
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 5
+
+## Hibernate Properties
+# create and drop tables and sequences, loads import.sql
+#sping.jpa.hibernate.ddl-auto=create-drop
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+  ## Jackson Properties
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+    time-zone: UTC
+
+## Hibernate Logging
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
