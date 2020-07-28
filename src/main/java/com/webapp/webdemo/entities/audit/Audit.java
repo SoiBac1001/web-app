@@ -11,15 +11,15 @@ import java.time.LocalDateTime;
 @Getter
 @MappedSuperclass
 public class Audit {
-    @Column(name = "CREATED_BY")
+    @Column(name = "CREATED_BY", length = 15, nullable = false)
     private String createdBy;
 
-    @Column(name = "CREATED_ON")
+    @Column(name = "CREATED_ON", nullable = false)
     private LocalDateTime createdOn;
 
-    @Column(name = "MODIFIED_BY")
+    @Column(name = "MODIFIED_BY", length = 15, nullable = false)
     private String modifiedBy;
 
-    @Column(name = "MODIFIED_ON")
+    @Column(name = "MODIFIED_ON", nullable = false)
     private LocalDateTime modifiedOn;
 }
