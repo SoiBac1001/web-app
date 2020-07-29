@@ -11,7 +11,8 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @Getter
 @Table(name = "USERS", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"userName", "email"})
+        @UniqueConstraint(columnNames = {"USER_NAME"}),
+        @UniqueConstraint(columnNames = {"EMAIL"})
 })
 public class User extends Audit {
     @Id
