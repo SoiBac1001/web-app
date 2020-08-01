@@ -2,6 +2,11 @@
 server:
   port: 8100
 
+app:
+  security:
+    jwtSecret: JWTSuperSecretKey
+    jwtExpirationInMs: 604800000
+
 ## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
 # Oracle settings
 spring:

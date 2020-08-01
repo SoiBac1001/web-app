@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Entity
 @Setter
@@ -25,15 +26,19 @@ public class User extends Audit {
     private Long userNo;
 
     @NotBlank
-    @Column(name = "USER_NAME", length = 20)
+    @Column(name = "NAME", length = 50, nullable = false)
+    private String name;
+
+    @NotBlank
+    @Column(name = "USER_NAME", length = 20, nullable = false)
     private String userName;
 
     @NotBlank
-    @Column(name = "PASSWORD", length = 50)
+    @Column(name = "PASSWORD", length = 50, nullable = false)
     private String password;
 
     @NotBlank
-    @Column(name = "EMAIL", length = 50)
+    @Column(name = "EMAIL", length = 50, nullable = false)
     private String email;
 
     /*@ManyToMany
@@ -41,4 +46,7 @@ public class User extends Audit {
             joinColumns = @JoinColumn(name = "USER_NO"),
             inverseJoinColumns = @JoinColumn(name = "ROLE_NO"))
     private List<Role> roles;*/
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    private List<UserRole> userRoles;
 }
