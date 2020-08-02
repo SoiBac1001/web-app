@@ -20,6 +20,10 @@ spring:
     hikari:
       connection-timeout: 60000
       maximum-pool-size: 5
+    servlet:
+      multipart:
+        max-request-size: 100MB
+        max-file-size: 10MB
 
 ## Hibernate Properties
 # create and drop tables and sequences, loads import.sql
@@ -43,9 +47,15 @@ spring:
       WRITE_DATES_AS_TIMESTAMPS: false
     time-zone: UTC
 
+file:
+  upload-dir: /upload
+
 ## Hibernate Logging
 logging:
   level:
     org:
       hibernate:
         SQL: DEBUG
+        type:
+          descriptor:
+            sql: trace

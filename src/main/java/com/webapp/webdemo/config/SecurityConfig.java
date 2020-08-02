@@ -1,10 +1,7 @@
 package com.webapp.webdemo.config;
 
-import com.webapp.webdemo.repository.RoleRepository;
-import com.webapp.webdemo.repository.UserRepository;
 import com.webapp.webdemo.security.JwtAuthenticationEntryPoint;
 import com.webapp.webdemo.security.JwtAuthenticationFilter;
-import com.webapp.webdemo.security.JwtTokenProvider;
 import com.webapp.webdemo.service.impl.CustomUserDetailsServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -71,7 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js")
                     .permitAll()
-                .antMatchers("/api/auth/**")
+                .antMatchers("/api/web/auth/**")
                     .permitAll()
                 .anyRequest()
                     .authenticated();

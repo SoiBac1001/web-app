@@ -35,7 +35,7 @@ public class JwtTokenProvider {
 
     public Long getUserNoFromJWT(String token){
         Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecret)
+                .setSigningKey(encodeTextByBASE64(jwtSecret))
                 .parseClaimsJws(token)
                 .getBody();
         return Long.parseLong(claims.getSubject());
@@ -44,8 +44,8 @@ public class JwtTokenProvider {
     public boolean validateToken(String authToken){
         try {
             Jwts.parser()
-                    .setSigningKey(jwtSecret)
-                    .parseClaimsJws(encodeTextByBASE64(jwtSecret));
+                    .setSigningKey(encodeTextByBASE64(jwtSecret))
+                    .parseClaimsJws(authToken);
             return true;
         } catch (SignatureException ex){
             log.error("Invalid JWT signature");

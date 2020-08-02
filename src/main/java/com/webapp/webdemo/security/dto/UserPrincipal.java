@@ -1,7 +1,9 @@
 package com.webapp.webdemo.security.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.webapp.webdemo.constants.enums.RoleName;
 import com.webapp.webdemo.entities.security.User;
+import com.webapp.webdemo.repository.RoleRepository;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,9 +32,10 @@ public class UserPrincipal implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public static UserPrincipal create(User user){
-        List<GrantedAuthority> authorities = user.getUserRoles().stream()
-                .map(userRole -> new SimpleGrantedAuthority(userRole.getRole().getRoleName().name()))
+    public static UserPrincipal create(User user, RoleRepository roleRepository){
+        List<RoleName> roleNames = roleRepository.getRoleNames(user.getUserNo());
+        List<GrantedAuthority> authorities = roleNames.stream()
+                .map(roleName -> new SimpleGrantedAuthority(roleName.name()))
                 .collect(Collectors.toList());
 
         return UserPrincipal.builder()

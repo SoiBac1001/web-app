@@ -1,7 +1,5 @@
 package com.webapp.webdemo.config;
 
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import com.webapp.webdemo.constants.CommonConstants;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,8 +13,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Collections;
 
-import static springfox.documentation.builders.PathSelectors.regex;
-
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -27,6 +23,7 @@ public class SwaggerConfig {
                         new ParameterBuilder()
                         .name(CommonConstants.HeaderConstants.APP_TOKEN)
                         .modelRef(new ModelRef("string"))
+                        .parameterType(CommonConstants.HeaderConstants.HEADER)
                         .required(true)
                         .hidden(true)
                         .defaultValue(CommonConstants.HeaderConstants.BEARER_TOKEN)

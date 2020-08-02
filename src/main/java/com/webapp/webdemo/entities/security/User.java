@@ -1,11 +1,7 @@
 package com.webapp.webdemo.entities.security;
 
 import com.webapp.webdemo.entities.audit.Audit;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

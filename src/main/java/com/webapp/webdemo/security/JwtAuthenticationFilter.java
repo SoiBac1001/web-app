@@ -4,7 +4,6 @@ import com.webapp.webdemo.service.impl.CustomUserDetailsServiceImpl;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.webapp.webdemo.constants.CommonConstants.*;
+import static com.webapp.webdemo.constants.CommonConstants.HeaderConstants;
 
 @Setter(onMethod_ = {@Autowired})
 @Slf4j
@@ -36,7 +35,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             if(StringUtils.hasText(jwt) && jwtTokenProvider.validateToken(jwt)){
                 Long userNo = jwtTokenProvider.getUserNoFromJWT(jwt);
                 UserDetails userDetails = customUserDetailsService.loadUserByUserNo(userNo);
-                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, userDetails.getAuthorities());
+                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
