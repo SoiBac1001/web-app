@@ -29,8 +29,8 @@ spring:
 # create and drop tables and sequences, loads import.sql
 #sping.jpa.hibernate.ddl-auto=create-drop
   jpa:
-#    hibernate:
-#      ddl-auto: update
+    hibernate:
+      ddl-auto: update
     properties:
       hibernate:
         show_sql: true
