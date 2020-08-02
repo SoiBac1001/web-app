@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 @Setter
 @Table(name = "USER_ROLE")
 public class UserRole extends Audit {
+    private static final long serialVersionUID = 6745224340142258307L;
+
     @Id
     @SequenceGenerator(sequenceName = "USER_ROLE_NO_SEQ", name = "SEQ_USER_ROLE_NO_GEN", allocationSize = 1)
     @GeneratedValue(

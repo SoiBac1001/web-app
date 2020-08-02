@@ -11,13 +11,16 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Setter
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public class Audit /*implements Serializable*/ {
+public class Audit implements Serializable {
+    private static final long serialVersionUID = 239211924032207430L;
+
     @CreatedBy
     @Column(name = "CREATED_BY", length = 15, nullable = false)
     private String createdBy;

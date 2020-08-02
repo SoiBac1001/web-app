@@ -12,6 +12,8 @@ import javax.persistence.*;
 @Setter
 @Table(name = "ROLE")
 public class Role extends Audit {
+    private static final long serialVersionUID = -4304217258690879468L;
+
     @Id
     @SequenceGenerator(sequenceName = "ROLE_NO_SEQ", name = "SEQ_ROLE_NO_GEN", allocationSize = 1)
     @GeneratedValue(

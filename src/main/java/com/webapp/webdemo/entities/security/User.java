@@ -18,6 +18,8 @@ import java.util.List;
         @UniqueConstraint(columnNames = {"EMAIL"})
 })
 public class User extends Audit {
+    private static final long serialVersionUID = 6745952044269174762L;
+
     @Id
     @SequenceGenerator(sequenceName = "USERS_NO_SEQ", name = "SEQ_USERS_NO_GEN", allocationSize = 1)
     @GeneratedValue(
