@@ -14,5 +14,4 @@ class WebdemoApplicationTests {
     void contextLoads() {
         System.out.println(userRepository.findById(1L).get());
     }
-
 }

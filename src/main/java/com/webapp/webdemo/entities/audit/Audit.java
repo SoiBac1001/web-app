@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public class Audit implements Serializable {
+public class Audit /*implements Serializable*/ {
     @CreatedBy
     @Column(name = "CREATED_BY", length = 15, nullable = false)
     private String createdBy;
