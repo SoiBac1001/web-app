@@ -1,6 +1,8 @@
 ## Server Properties
 server:
   port: 8100
+  servlet:
+    context-path: /web-demo
 
 app:
   security:

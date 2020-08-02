@@ -1,6 +1,7 @@
 package com.webapp.webdemo.entities.security;
 
 import com.webapp.webdemo.entities.audit.Audit;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +16,7 @@ import java.util.List;
         @UniqueConstraint(columnNames = {"USER_NAME"}),
         @UniqueConstraint(columnNames = {"EMAIL"})
 })
+@Builder
 public class User extends Audit {
     @Id
     @SequenceGenerator(sequenceName = "USERS_NO_SEQ", name = "SEQ_USERS_NO_GEN", allocationSize = 1)
