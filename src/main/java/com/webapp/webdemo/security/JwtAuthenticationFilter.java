@@ -9,6 +9,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -22,6 +23,7 @@ import static com.webapp.webdemo.constants.CommonConstants.*;
 
 @Setter(onMethod_ = {@Autowired})
 @Slf4j
+@Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 //    @Autowired
     private JwtTokenProvider jwtTokenProvider;
@@ -45,8 +47,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     }
 
     private String getJwtFromRequest(HttpServletRequest request){
-        String bearerToken = request.getHeader(HeaderConstants.BEARER_TOKEN);
-        if(StringUtils.hasText(bearerToken) && bearerToken.startsWith(HttpHeaders.AUTHORIZATION)){
+        String bearerToken = request.getHeader(HeaderConstants.APP_TOKEN);
+        if(StringUtils.hasText(bearerToken) && bearerToken.startsWith(HeaderConstants.BEARER_TOKEN)){
             return bearerToken.substring(HeaderConstants.BEARER_TOKEN.length());
         }
         return null;

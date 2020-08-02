@@ -34,7 +34,7 @@ public class User extends Audit {
     private String userName;
 
     @NotBlank
-    @Column(name = "PASSWORD", length = 50, nullable = false)
+    @Column(name = "PASSWORD", length = 255, nullable = false)
     private String password;
 
     @NotBlank
