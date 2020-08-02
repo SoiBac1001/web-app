@@ -20,6 +20,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @AllArgsConstructor
@@ -33,6 +34,8 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private final UserRoleRepository userRoleRepository;
 
+    @Transactional
+    @Override
     public TokenResponse login(LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
@@ -42,8 +45,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public ApiResponse registerUser(SignUpRequest signUpRequest) {
-        if(userRepository.existsByUserName(signUpRequest.getUserName())) {
+        if(userRepository.existsByUsername(signUpRequest.getUsername())) {
             return new ApiResponse(false, "Username is already taken!");
         }
 
@@ -54,7 +58,7 @@ public class UserServiceImpl implements UserService {
         // Creating user's account
         User user = User.builder()
                 .name(signUpRequest.getName())
-                .userName(signUpRequest.getUserName())
+                .username(signUpRequest.getUsername())
                 .email(signUpRequest.getEmail())
                 .password(passwordEncoder.encode(signUpRequest.getPassword()))
                 .build();

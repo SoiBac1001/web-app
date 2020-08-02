@@ -1,5 +1,6 @@
 package com.webapp.webdemo.entities.security;
 
+import com.webapp.webdemo.entities.audit.Audit;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Table(name = "USER_ROLE")
-public class UserRole {
+public class UserRole extends Audit {
     @Id
     @SequenceGenerator(sequenceName = "USER_ROLE_NO_SEQ", name = "SEQ_USER_ROLE_NO_GEN", allocationSize = 1)
     @GeneratedValue(

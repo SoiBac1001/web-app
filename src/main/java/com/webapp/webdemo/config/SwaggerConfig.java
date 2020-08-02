@@ -20,10 +20,6 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-    private Predicate<String> apiPaths() {
-        return Predicates.or(regex("/web-demo.*"), regex("/api/.*"));
-    }
-
     @Bean
     public Docket restApi(){
         return new Docket(DocumentationType.SWAGGER_2)
@@ -38,7 +34,7 @@ public class SwaggerConfig {
                 ))
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(apiPaths())
+                .paths(PathSelectors.any())
                 .build();
     }
 }

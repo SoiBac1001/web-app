@@ -38,7 +38,7 @@ public class UserPrincipal implements UserDetails {
         return UserPrincipal.builder()
                 .userNo(user.getUserNo())
                 .name(user.getName())
-                .username(user.getUserName())
+                .username(user.getUsername())
                 .password(user.getPassword())
                 .email(user.getEmail())
                 .authorities(authorities)

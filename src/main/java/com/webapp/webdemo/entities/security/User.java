@@ -4,6 +4,8 @@ import com.webapp.webdemo.entities.audit.Audit;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -12,11 +14,13 @@ import java.util.List;
 @Entity
 @Setter
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "USERS", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"USER_NAME"}),
+        @UniqueConstraint(columnNames = {"USERNAME"}),
         @UniqueConstraint(columnNames = {"EMAIL"})
 })
-@Builder
 public class User extends Audit {
     @Id
     @SequenceGenerator(sequenceName = "USERS_NO_SEQ", name = "SEQ_USERS_NO_GEN", allocationSize = 1)
@@ -32,8 +36,8 @@ public class User extends Audit {
     private String name;
 
     @NotBlank
-    @Column(name = "USER_NAME", length = 20, nullable = false)
-    private String userName;
+    @Column(name = "USERNAME", length = 20, nullable = false)
+    private String username;
 
     @NotBlank
     @Column(name = "PASSWORD", length = 255, nullable = false)
