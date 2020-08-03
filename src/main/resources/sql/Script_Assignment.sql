@@ -44,7 +44,7 @@ CREATE TABLE DOCUMENT (
     created_on   TIMESTAMP(3) NOT NULL,
     modified_by   NVARCHAR2(20) NOT NULL,
     modified_on   TIMESTAMP(3) NOT NULL,
-    CONSTRAINT role_fk PRIMARY KEY ( ROLE_NO )
+    CONSTRAINT document_fk PRIMARY KEY ( DOCUMENT_NO )
 );
 
 -- INSERT DATA

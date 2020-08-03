@@ -16,6 +16,7 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
 
 @Slf4j
 public class FileUtils {
@@ -25,7 +26,7 @@ public class FileUtils {
 
     public static Path storeFile(Path fileStorageLocation, MultipartFile file) {
         // Normalize file name
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
 
         // Check if type file's invalid
         if (!validateFile(fileName)) {

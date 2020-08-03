@@ -1,6 +1,7 @@
 package com.webapp.webdemo.security;
 
 import com.webapp.webdemo.service.impl.CustomUserDetailsServiceImpl;
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,14 @@ import java.io.IOException;
 
 import static com.webapp.webdemo.constants.CommonConstants.HeaderConstants;
 
-@Setter(onMethod_ = {@Autowired})
+//@Setter(onMethod_ = {@Autowired})
 @Slf4j
+@AllArgsConstructor
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 //    @Autowired
-    private JwtTokenProvider jwtTokenProvider;
-    private CustomUserDetailsServiceImpl customUserDetailsService;
+    private final JwtTokenProvider jwtTokenProvider;
+    private final CustomUserDetailsServiceImpl customUserDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
