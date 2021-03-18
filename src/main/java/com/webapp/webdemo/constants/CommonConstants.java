@@ -22,7 +22,7 @@ public class CommonConstants {
     /**
      * FILE
      */
-    public static final String FILES_TYPE = ".doc, .docx, .xls, .xlsx, .csv, .pdf, .png, .jpeg";
+    public static final String FILES_TYPE = ".doc, .docx, .xls, .xlsx, .csv, .pdf, .png, .jpeg, .jpg";
     public static final String ATTACHMENT_FILENAME = "attachment; filename=\"";
 
     /**
@@ -30,4 +30,5 @@ public class CommonConstants {
      */
     public static final String ENCODE_CHARACTER_SPACE = "%20";
     public static final String WHITE_SPACE_CHARACTER = " ";
+    public static final String UNDERSCORE_SYMBOL = "_";
 }

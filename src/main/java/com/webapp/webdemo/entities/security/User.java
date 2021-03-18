@@ -45,12 +45,6 @@ public class User extends Audit {
     @Column(name = "EMAIL", length = 50, nullable = false)
     private String email;
 
-    /*@ManyToMany
-    @JoinTable(name = "USER_ROLE",
-            joinColumns = @JoinColumn(name = "USER_NO"),
-            inverseJoinColumns = @JoinColumn(name = "ROLE_NO"))
-    private List<Role> roles;*/
-
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserRole> userRoles;
 }

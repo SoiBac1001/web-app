@@ -9,13 +9,20 @@
 
 package com.webapp.webdemo.service;
 
+import com.webapp.webdemo.payload.request.UserDocumentRequest;
 import com.webapp.webdemo.payload.response.DocumentResponse;
+import com.webapp.webdemo.payload.response.PagingResponseModel;
+import com.webapp.webdemo.payload.response.UserDocumentResponse;
 import org.springframework.core.io.Resource;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface DocumentService {
-    DocumentResponse uploadFile(MultipartFile files);
-
+    DocumentResponse uploadFile(Long userNo, MultipartFile files);
+    PagingResponseModel<DocumentResponse> getFiles(String searchedValue, Long userNo, Pageable pageable);
+    DocumentResponse getDetailDocument(Long documentNo);
+    UserDocumentResponse updatePermission(UserDocumentRequest userDocumentRequest);
     Resource downloadFile(UsernamePasswordAuthenticationToken principal, Long documentNo);
+    boolean deleteDocument(Long documentNo);
 }
