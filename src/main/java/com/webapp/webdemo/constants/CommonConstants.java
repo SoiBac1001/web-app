@@ -16,7 +16,8 @@ public class CommonConstants {
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
     public static class CommonRegex{
         public static final String COMMA_SPACE = ", ";
-        public static final String KEY_SLASH = "\"";
+        public static final String SLASH = "\"";
+        public static final String DOUBLE_SLASH = "\\";
     }
 
     /**
