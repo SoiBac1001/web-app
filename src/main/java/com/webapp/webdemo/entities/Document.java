@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Setter
@@ -29,4 +30,7 @@ public class Document extends Audit {
 
     @Column(name = "URL")
     private String url;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "document", cascade = CascadeType.REMOVE)
+    private List<UserDocument> userDocumentList;
 }

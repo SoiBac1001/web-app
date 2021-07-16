@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.net.URI;
 
 @RestController
 @AllArgsConstructor
@@ -29,6 +31,9 @@ public class AuthController extends AbstractController{
 
     @PostMapping("/signup")
     public ResponseEntity<ApiResponse> registerUser(@Valid @RequestBody SignUpRequest signUpRequest){
-        return new ResponseEntity<>(userService.registerUser(signUpRequest), HttpStatus.CREATED);
+        URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/users/{username}")
+                .buildAndExpand(signUpRequest.getUsername()).toUri();
+        return ResponseEntity.created(location).body(userService.registerUser(signUpRequest));
     }
 }
+

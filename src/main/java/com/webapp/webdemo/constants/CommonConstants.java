@@ -16,13 +16,14 @@ public class CommonConstants {
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
     public static class CommonRegex{
         public static final String COMMA_SPACE = ", ";
-        public static final String KEY_SLASH = "\"";
+        public static final String SLASH = "\"";
+        public static final String DOUBLE_SLASH = "\\";
     }
 
     /**
      * FILE
      */
-    public static final String FILES_TYPE = ".doc, .docx, .xls, .xlsx, .csv, .pdf, .png, .jpeg";
+    public static final String FILES_TYPE = ".doc, .docx, .xls, .xlsx, .csv, .pdf, .png, .jpeg, .jpg";
     public static final String ATTACHMENT_FILENAME = "attachment; filename=\"";
 
     /**
@@ -30,4 +31,5 @@ public class CommonConstants {
      */
     public static final String ENCODE_CHARACTER_SPACE = "%20";
     public static final String WHITE_SPACE_CHARACTER = " ";
+    public static final String UNDERSCORE_SYMBOL = "_";
 }

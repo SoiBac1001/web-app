@@ -29,7 +29,4 @@ public class Role extends Audit {
 
     @Column(name = "DESCRIPTION", length = 2000)
     private String description;
-
-    /*@ManyToMany(mappedBy = "roles")
-    private List<User> users;*/
 }

@@ -14,4 +14,5 @@ public class EntityNameConstants {
      * Field constant
      */
     public static final String DOCUMENT_NO = "documentNo";
+    public static final String DOCUMENT_NAME = "document.fileName";
 }

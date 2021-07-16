@@ -86,7 +86,7 @@ public class FileUtils {
         }
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(MediaType.APPLICATION_OCTET_STREAM_VALUE))
-                .header(HttpHeaders.CONTENT_DISPOSITION, CommonConstants.ATTACHMENT_FILENAME + fileName + CommonConstants.CommonRegex.KEY_SLASH)
+                .header(HttpHeaders.CONTENT_DISPOSITION, CommonConstants.ATTACHMENT_FILENAME + fileName + CommonConstants.CommonRegex.SLASH)
                 .body(resource);
     }
 
